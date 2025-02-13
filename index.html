@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днём Святого Валентина!</title>
+    <style>
+        body {
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .wishes {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: darkred;
+            z-index: 10;
+        }
+        .wish {
+            opacity: 0;
+            animation: appear 2s forwards;
+        }
+        @keyframes appear {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .heart {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            animation: float 5s infinite ease-in-out;
+        }
+        .heart::before, .heart::after {
+            content: '';
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart::before {
+            top: -25px;
+            left: 0;
+        }
+        .heart::after {
+            left: 25px;
+            top: 0;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+            100% { transform: translateY(0) scale(1); }
+        }
+        .photo-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+        }
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            opacity: 0;
+            animation: fadeInOut 6s infinite;
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: scale(0.9); }
+            10% { opacity: 1; transform: scale(1); }
+            40% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 0; transform: scale(0.9); }
+        }
+    </style>
+</head>
+<body>
+    <div class="wishes">
+        <div class="wish" style="animation-delay: 1s;">Я тебя очень сильно люблю</div>
+        <div class="wish" style="animation-delay: 3s;">Ты у меня самая-самая красивая</div>
+        <div class="wish" style="animation-delay: 5s;">Оставайся такой же принцессой</div>
+        <div class="wish" style="animation-delay: 7s;">Ты смысл моей жизни</div>
+        <div class="wish" style="animation-delay: 9s;">Ты делаешь меня самым счастливым человеком</div>
+    </div>
+    
+    <div class="photo-container">
+        <img src="photo_2025-02-02_12-00-38.jpg" style="animation-delay: 0s;">
+        <img src="photo_2024-12-27_12-17-19.jpg" style="animation-delay: 6s;">
+        <img src="photo_2024-12-27_12-17-30.jpg" style="animation-delay: 12s;">
+        <img src="photo_2025-01-06_00-36-24.jpg" style="animation-delay: 18s;">
+    </div>
+    
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            document.body.appendChild(heart);
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = Math.random() * window.innerHeight + 'px';
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
